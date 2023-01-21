@@ -5,7 +5,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-
+import java.util.*;
 
 public class Version2{
     public static void main(String[] main) {
@@ -31,24 +31,12 @@ class dotCom{
 
     public dotCom(){
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("\nPlease Enter Domain name : ");
+        System.out.println("\nPlease Enter Domain names : ");
         this.domain = sc.nextLine();
-
         int s = DotComsGame.len;
-        char RowLim = (char)('A'+(s-1));
-        char ColLim = (char)('0'+(s-3));
-        while(true){
-            System.out.println("\nPlease Enter DotCom Location: (Note: Format([A-" + RowLim+ "][0-" + ColLim + "])");
-            String loc = sc.nextLine();
-            if(loc.length()==2 && loc.charAt(0)>='A' && loc.charAt(0)<=RowLim && loc.charAt(1)>='0' && loc.charAt(1)<=ColLim){
-                this.loc = new pair(loc.charAt(0)-'A', loc.charAt(1)-'0');
-                break;
-            }
-        }
-
+        Random r = new Random();
+        this.loc = new pair(r.nextInt(0,s), r.nextInt(0,s-2));
         this.setNoVisited(3);
-
         this.isVis = new boolean[3];
     }
 
