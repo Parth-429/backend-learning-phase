@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Version1 {
@@ -42,13 +43,8 @@ public class Version1 {
         System.out.println("Please enter length of cells (Minimum length should be 3): ");
         lenOfArray = sc.nextInt();
 
-        while(true) {
-            System.out.println("Please enter starting location for ship: ");
-            locOfShip = sc.nextInt();
-            if (locOfShip <= lenOfArray - 3) {
-                break;
-            }
-        }
+        Random rt = new Random();
+        locOfShip = rt.nextInt(0,lenOfArray-2);
 
         Version1 obj = new Version1();
         obj.location = new ArrayList<Integer>(lenOfArray);
